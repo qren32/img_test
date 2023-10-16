@@ -45,6 +45,7 @@ class ChatHub:
             conversation_id=conversation.struct["conversationId"],
             blobId=conversation.img_id["blobId"],
         )
+        cookies = list(filter(lambda d: d.get('name') != 'MUID', cookies)) + [{"name": "MUID", "value": conversation.struct["clientId"]}]
         self.cookies = cookies
         self.proxy: str = proxy
         proxy = (
